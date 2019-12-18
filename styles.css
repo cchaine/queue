@@ -1,0 +1,62 @@
+.row {
+	height : 100%;
+	width : 100vw;
+}
+
+#queue {
+	height : 100%;
+	
+	display : flex;
+	flex-direction: column;
+	
+	padding: 1rem 2rem 1rem 2rem;
+}
+
+#queue #header {
+	display : flex;
+	
+	margin-bottom: 2rem;
+}
+
+#queue #footer {
+	display : flex;
+}
+
+.spacer {
+	flex-grow: 1;
+}
+
+#current {
+	height : 100%;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#current #current-name{
+	font-size: 6rem;
+}
+
+#body {
+	padding: 1rem;
+}
+
+.entry {
+	display : flex;
+}
+
+.entry button {
+	opacity: 0;
+	
+	transition: opacity 0.1s;
+}
+
+.entry.active label{
+	font-weight: bold;
+	font-size: 1.2rem;
+}
+
+.entry:hover button {
+	opacity: 1;
+}
