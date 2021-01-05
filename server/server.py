@@ -2,6 +2,7 @@ import websockets
 import asyncio
 import json
 import sqlite3
+from argparse import ArgumentParser
 
 queue = []
 current = 0
@@ -40,7 +41,17 @@ async def run(websocket, path):
 			response = { "command": "refresh", "queue": queue, "current" : current }
 			await ws.send(json.dumps(response))
 
-start_server = websockets.serve(run, "10.32.10.118", 8001)
+# Parse arguments
+parser = ArgumentParser(description='Manage queue on a local network')
+parser.add_argument('-ip', help='specifies the server ip', required=True)
+parser.add_argument('-p', help='specifies the server port', default=8001, required=False)
+args = parser.parse_args()
+
+ip = args.ip
+port = args.p
+
+print("Starting queue server on", ip, ":", port)
+start_server = websockets.serve(run, ip, port)
 
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()

@@ -1,4 +1,4 @@
-ws = new WebSocket("ws://10.32.10.118:8001");
+ws = new WebSocket("ws://192.168.1.54:8001");
 ws.onopen = function(event) {
 	message = { command: "refresh" }
 	ws.send(JSON.stringify(message));
